@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# ShopEase
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ShopEase es una aplicación web moderna y accesible creada en React18 que permite a los usuarios hacer compras de productos en línea. La aplicación cuenta con la capacidad de registrar cuentas de usuarios, iniciar sesión y utilizar un carrito de compras para comprar productos.
 
-## Available Scripts
+## Características
 
-In the project directory, you can run:
+- Registro de usuarios
+- Inicio de sesión
+- Búsqueda de productos
+- Agregar productos al carrito de compras
+- Ver historial de compras
 
-### `npm start`
+## Tecnologías utilizadas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React18
+- HTML5
+- CSS3
+- JavaScript
+- Firebase
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Instalación
 
-### `npm test`
+Para instalar ShopEase, clona el repositorio y ejecuta el siguiente comando:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+npm install
 
-### `npm run build`
+Luego, puedes iniciar la aplicación con el siguiente comando:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+npm start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Contribución
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Si deseas contribuir a ShopEase, realiza los siguientes pasos:
 
-### `npm run eject`
+1. Crea un fork del repositorio.
+2. Crea una nueva rama en tu fork.
+3. Haz tus cambios y realiza commits.
+4. Realiza un pull request desde tu rama a la rama principal del repositorio.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Licencia
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Este proyecto está bajo la Licencia MIT - mira el archivo [LICENSE.md](LICENSE.md) para detalles.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+¡Gracias por elegir ShopEase! Si tienes algún problema o sugerencia, por favor, háznoslo saber.
