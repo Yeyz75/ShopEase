@@ -1,13 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import "./Home.css";
+
 function Home() {
   return (
     <div className="home">
       <div className="home__banner">
-        <h1>Bienvenido a ShopEase</h1>
-        <p>
-          Explora nuestra selección de productos destacados y ofertas especiales
-        </p>
-        <button>Explorar productos</button>
+        <div className="home__banner-overlay">
+          <h1>Bienvenido a ShopEase</h1>
+          <p>
+            Explora nuestra selección de productos destacados y ofertas
+            especiales
+          </p>
+          <Link to="/products">
+            <button>Explorar productos</button>
+          </Link>
+        </div>
       </div>
       <div className="home__services">
         <div className="home__services-item">
