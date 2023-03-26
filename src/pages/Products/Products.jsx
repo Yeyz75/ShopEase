@@ -1,49 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
+import Product from "../../components/Product/product";
 import "./Products.css";
 
-function Products() {
+const Products = () => {
+  const [cart, setCart] = useState([]);
+
   const products = [
     {
       id: 1,
-      name: "Producto 1",
-      price: "$10.00",
-      image: "https://via.placeholder.com/150x150",
-      description: "Descripción del producto 1",
+      name: "Product 1",
+      image: "https://via.placeholder.com/150",
+      price: "$10",
     },
     {
       id: 2,
-      name: "Producto 2",
-      price: "$20.00",
-      image: "https://via.placeholder.com/150x150",
-      description: "Descripción del producto 2",
+      name: "Product 2",
+      image: "https://via.placeholder.com/150",
+      price: "$20",
     },
     {
       id: 3,
-      name: "Producto 3",
-      price: "$30.00",
-      image: "https://via.placeholder.com/150x150",
-      description: "Descripción del producto 3",
+      name: "Product 3",
+      image: "https://via.placeholder.com/150",
+      price: "$30",
     },
   ];
 
+  const handleAddToCart = (productId) => {
+    const productToAdd = products.find((product) => product.id === productId);
+    setCart([...cart, productToAdd]);
+  };
+
   return (
-    <div className="Products">
-      {products.map((product) => (
-        <div key={product.id} className="Products__item">
-          <img
-            className="Products__image"
-            src={product.image}
-            alt={product.name}
+    <div className="products-container">
+      <div className="products">
+        {products.map((product) => (
+          <Product
+            key={product.id}
+            name={product.name}
+            image={product.image}
+            price={product.price}
+            onAddToCart={() => handleAddToCart(product.id)}
           />
-          <div className="Products__info">
-            <h3 className="Products__name">{product.name}</h3>
-            <p className="Products__price">{product.price}</p>
-            <p className="Products__description">{product.description}</p>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
+      <div className="cart">
+        <h2>Cart</h2>
+        {cart.length === 0 ? (
+          <p>Your cart is empty.</p>
+        ) : (
+          <ul>
+            {cart.map((product) => (
+              <li key={product.id}>
+                {product.name} ({product.price})
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
-}
+};
 
 export default Products;
