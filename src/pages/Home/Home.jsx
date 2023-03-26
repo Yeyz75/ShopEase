@@ -24,11 +24,6 @@ function Home() {
           <p>En compras superiores a $50</p>
         </div>
         <div className="home__services-item">
-          <i className="fas fa-undo"></i>
-          <h2>Devoluciones fáciles</h2>
-          <p>Hasta 30 días después de la compra</p>
-        </div>
-        <div className="home__services-item">
           <i className="fas fa-wallet"></i>
           <h2>Pagos seguros</h2>
           <p>Utilizamos encriptación SSL</p>
