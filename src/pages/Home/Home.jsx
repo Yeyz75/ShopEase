@@ -33,15 +33,15 @@ function Home() {
         <h2>Explora nuestras categorías de productos</h2>
         <div className="home__category-item">
           <img src="https://via.placeholder.com/150" alt="Categoría 1" />
-          <h3>Categoría 1</h3>
+          <h3>Calzado</h3>
         </div>
         <div className="home__category-item">
           <img src="https://via.placeholder.com/150" alt="Categoría 2" />
-          <h3>Categoría 2</h3>
+          <h3>Ropa</h3>
         </div>
         <div className="home__category-item">
           <img src="https://via.placeholder.com/150" alt="Categoría 3" />
-          <h3>Categoría 3</h3>
+          <h3>Varios</h3>
         </div>
       </div>
     </div>

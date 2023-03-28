@@ -80,8 +80,8 @@
 }
 
 .home__categories {
+
     text-align: center;
-    margin-top: 5rem;
 }
 
 .home__categories h2 {
@@ -93,6 +93,8 @@
     display: inline-block;
     margin: 1rem;
     transition: all 0.3s ease;
+    background-color: #f8f8f8;
+    border-radius: 10px;
 }
 
 .home__category-item img {
