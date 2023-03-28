@@ -1,10 +1,9 @@
 :root {
-    --color-primary: #253d4d;
-    --color-secondary: #f8fcf9;
-    --color-tertiary: #c96fcd;
-    /* 253d4d , f8fcf9 , c96fcd*/
+    --color-primary: #9A208C;
+    --color-secondary: #FFEAEA;
+    --color-tertiary: #E11299;
+    --color-quaternary: #F5C6EC;
 }
-
 
 .NavBar {
     display: flex;
@@ -43,7 +42,7 @@
 }
 
 /* Media query para menú hamburguesa */
-@media (max-width: 768px) {
+@media (max-width: 568px) {
     .NavBar {
         flex-direction: row;
         align-items: flex-start;
@@ -68,13 +67,13 @@
     }
 
     .NavBar__list li a {
-        color: var(--color-secondary);
+        color: var(--color-primary);
         text-decoration: none;
     }
 
     .NavBar__toggle {
         display: block;
-        color: var(--color-primary);
+        color: var(--color-quaternary);
         font-size: 1.5rem;
         margin-right: 1rem;
         cursor: pointer;
@@ -94,7 +93,7 @@
         width: 1.5rem;
         height: 0.2rem;
         margin-bottom: 0.3rem;
-        background-color: var(--color-primary);
+        background-color: var(--color-quaternary);
         border-radius: 1rem;
     }
 
