@@ -106,8 +106,8 @@
 }
 
 .home__category-item img {
-    width: 100%;
-    height: auto;
+    width: 250px;
+    height: 250px;
     border-radius: 10px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;

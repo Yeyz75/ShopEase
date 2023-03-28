@@ -1,5 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import calzado1 from "../../assets/images/calzado1.jpg";
+import ropa1 from "../../assets/images/ropa1.jpg";
+import varios1 from "../../assets/images/varios1.jpg";
+
 import "./Home.css";
 
 function Home() {
@@ -32,15 +36,15 @@ function Home() {
       <div className="home__categories">
         <h2>Explora nuestras categorías de productos</h2>
         <div className="home__category-item">
-          <img src="https://via.placeholder.com/150" alt="Categoría 1" />
+          <img src={calzado1} alt="Categoría 1" />
           <h3>Calzado</h3>
         </div>
         <div className="home__category-item">
-          <img src="https://via.placeholder.com/150" alt="Categoría 2" />
+          <img src={ropa1} alt="Categoría 2" />
           <h3>Ropa</h3>
         </div>
         <div className="home__category-item">
-          <img src="https://via.placeholder.com/150" alt="Categoría 3" />
+          <img src={varios1} alt="Categoría 3" />
           <h3>Varios</h3>
         </div>
       </div>

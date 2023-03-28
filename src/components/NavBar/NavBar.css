@@ -37,6 +37,11 @@
     text-decoration: none;
 }
 
+.NavBar__list li a:hover {
+    color: var(--color-quaternary);
+}
+
+
 .NavBar__toggle {
     display: none;
 }
@@ -67,7 +72,7 @@
     }
 
     .NavBar__list li a {
-        color: var(--color-primary);
+        color: var(--color-secondary);
         text-decoration: none;
     }
 
