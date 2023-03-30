@@ -33,8 +33,8 @@ function Home() {
           <p>Utilizamos encriptación SSL</p>
         </div>
       </div>
+      <h2>Explora nuestras categorías de productos</h2>
       <div className="home__categories">
-        <h2>Explora nuestras categorías de productos</h2>
         <div className="home__category-item">
           <img src={calzado1} alt="Categoría 1" />
           <h3>Calzado</h3>

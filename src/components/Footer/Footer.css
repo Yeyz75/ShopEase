@@ -1,0 +1,38 @@
+:root {
+    --primary-color: #E11299;
+    --footer-background: #E11299;
+    --footer-text-color: #FFEAEA;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+    }
+}
+
+footer {
+    background-color: var(--footer-background);
+    color: var(--footer-text-color);
+    padding: 1.5rem;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.footer-text {
+    margin: 0;
+}
+
+.footer-text a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}
