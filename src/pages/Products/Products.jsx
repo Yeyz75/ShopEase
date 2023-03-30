@@ -3,8 +3,6 @@ import Product from "../../components/Product/product";
 import "./Products.css";
 
 const Products = () => {
-  const [cart, setCart] = useState([]);
-
   const products = [
     {
       id: 1,
@@ -26,11 +24,6 @@ const Products = () => {
     },
   ];
 
-  const handleAddToCart = (productId) => {
-    const productToAdd = products.find((product) => product.id === productId);
-    setCart([...cart, productToAdd]);
-  };
-
   return (
     <div className="products-container">
       <div className="products">
@@ -40,23 +33,8 @@ const Products = () => {
             name={product.name}
             image={product.image}
             price={product.price}
-            onAddToCart={() => handleAddToCart(product.id)}
           />
         ))}
-      </div>
-      <div className="cart">
-        <h2>Cart</h2>
-        {cart.length === 0 ? (
-          <p>Your cart is empty.</p>
-        ) : (
-          <ul>
-            {cart.map((product) => (
-              <li key={product.id}>
-                {product.name} ({product.price})
-              </li>
-            ))}
-          </ul>
-        )}
       </div>
     </div>
   );

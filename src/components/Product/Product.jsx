@@ -1,24 +1,17 @@
 import React from "react";
-import PropTypes from "prop-types";
-import Button from "../Button/index";
-import "./Product.css";
 
-const Product = ({ name, image, price, onAddToCart }) => {
+const Product = ({ name, description, price, image }) => {
   return (
-    <div className="product">
-      <img src={image} alt={name} />
-      <h3>{name}</h3>
-      <p>{price}</p>
-      <Button onClick={onAddToCart}>Add to Cart</Button>
-    </div>
+    <article className="product">
+      <figure>
+        <img src={image} alt={name} />
+        <figcaption>{name}</figcaption>
+      </figure>
+      <p className="product__description">{description}</p>
+      <p className="product__price">{price}</p>
+      <button className="product__button">Add to cart</button>
+    </article>
   );
-};
-
-Product.propTypes = {
-  name: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
-  onAddToCart: PropTypes.func.isRequired,
 };
 
 export default Product;
