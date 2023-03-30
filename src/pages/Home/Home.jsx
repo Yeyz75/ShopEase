@@ -1,10 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import calzado1 from "../../assets/images/calzado1.jpg";
-import ropa1 from "../../assets/images/ropa1.jpg";
-import varios1 from "../../assets/images/varios1.jpg";
-
 import "./Home.css";
+const rutaBaseImage = process.env.PUBLIC_URL + "/images/";
 
 function Home() {
   return (
@@ -36,15 +33,15 @@ function Home() {
       <h2>Explora nuestras categorías de productos</h2>
       <div className="home__categories">
         <div className="home__category-item">
-          <img src={calzado1} alt="Categoría 1" />
+          <img src={rutaBaseImage + "calzado1.jpg"} alt="Categoría 1" />
           <h3>Calzado</h3>
         </div>
         <div className="home__category-item">
-          <img src={ropa1} alt="Categoría 2" />
+          <img src={rutaBaseImage + "ropa1.jpg"} alt="Categoría 2" />
           <h3>Ropa</h3>
         </div>
         <div className="home__category-item">
-          <img src={varios1} alt="Categoría 3" />
+          <img src={rutaBaseImage + "varios1.jpg"} alt="Categoría 3" />
           <h3>Varios</h3>
         </div>
       </div>
