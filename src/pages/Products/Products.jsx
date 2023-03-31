@@ -1,32 +1,19 @@
-import React from "react";
-import Product from "../../components/Product/index";
+import React, { useState } from "react";
+import Product from "../../components/Product";
+import getProductBrands from "../../services/productapi";
 
 const Products = () => {
-  const products = [
-    {
-      id: 1,
-      name: "Product 1",
-      image: "https://via.placeholder.com/150",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      price: 10.99,
-    },
-    {
-      id: 2,
-      name: "Product 2",
-      image: "https://via.placeholder.com/150",
-      description:
-        "Praesent vel orci aliquet, blandit sapien quis, aliquam orci.",
-      price: 24.99,
-    },
-    {
-      id: 3,
-      name: "Product 3",
-      image: "https://via.placeholder.com/150",
-      description:
-        "Nulla facilisi. Nullam tincidunt rutrum urna, vel accumsan metus mattis nec.",
-      price: 14.99,
-    },
-  ];
+  const [products, setProducts] = useState([]);
+  const [numProductsToShow] = useState(10);
+  const [loaded, setLoaded] = useState(false);
+
+  const handleClick = async () => {
+    if (!loaded) {
+      const data = await getProductBrands();
+      setProducts(data);
+      setLoaded(true);
+    }
+  };
 
   return (
     <div className="products">
@@ -35,9 +22,12 @@ const Products = () => {
         Aquí se muestran todos los productos disponibles en nuestra tienda
         online:
       </p>
-      {products.map((product) => (
-        <Product key={product.id} product={product} />
-      ))}
+      {loaded &&
+        products
+          .slice(0, numProductsToShow)
+          .map((product) => <Product key={product.id} product={product} />)}
+
+      <button onClick={handleClick}>Mostrar más</button>
     </div>
   );
 };
