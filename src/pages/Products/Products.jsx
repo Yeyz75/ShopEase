@@ -1,35 +1,44 @@
-import "./Products.css";
-import Product from "../../components/Product/product";
+import React from "react";
+import Product from "../../components/Product/index";
 
 const Products = () => {
+  const products = [
+    {
+      id: 1,
+      name: "Product 1",
+      image: "https://via.placeholder.com/150",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      price: 10.99,
+    },
+    {
+      id: 2,
+      name: "Product 2",
+      image: "https://via.placeholder.com/150",
+      description:
+        "Praesent vel orci aliquet, blandit sapien quis, aliquam orci.",
+      price: 24.99,
+    },
+    {
+      id: 3,
+      name: "Product 3",
+      image: "https://via.placeholder.com/150",
+      description:
+        "Nulla facilisi. Nullam tincidunt rutrum urna, vel accumsan metus mattis nec.",
+      price: 14.99,
+    },
+  ];
+
   return (
-    <main id="main-content">
-      <header>
-        <h1>Descubre nuestra selección de productos</h1>
-        <p>
-          En ShopEase, ofrecemos una amplia variedad de productos de alta
-          calidad.
-        </p>
-      </header>
-      <section className="products-container">
-        <h2>Our Products</h2>
-        <div className="products">
-          <Product
-            name="Product 1"
-            description="This is the description of product 1."
-            price="19.99"
-            image="https://via.placeholder.com/150"
-          />
-          <Product
-            name="Product 2"
-            description="This is the description of product 2."
-            price="29.99"
-            image="https://via.placeholder.com/150"
-          />
-          {/* Agrega más productos aquí */}
-        </div>
-      </section>
-    </main>
+    <div className="products">
+      <h1>Bienvenidos a ShopEase</h1>
+      <p>
+        Aquí se muestran todos los productos disponibles en nuestra tienda
+        online:
+      </p>
+      {products.map((product) => (
+        <Product key={product.id} product={product} />
+      ))}
+    </div>
   );
 };
 
