@@ -1,24 +1,29 @@
 :root {
-    --color-primary: #9A208C;
-    --color-secondary: #FFEAEA;
-    --color-tertiary: #E11299;
-    --color-quaternary: #F5C6EC;
+    --color-primary-navbar: #0B132B;
+    --color-secondary-navbar: #FFFFFF;
+    --color-tertiary-navbar: #4B86B4;
+    --color-quaternary-navbar: #5DA9E9;
 }
 
 .NavBar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
+    background-color: var(--color-primary-navbar);
+    color: var(--color-secondary-navbar);
     padding: 1rem;
 }
 
 .NavBar__logo a {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--color-secondary);
+    color: var(--color-secondary-navbar);
     text-decoration: none;
+}
+
+
+.NavBar button:hover {
+    background-color: var(--color-secondary-navbar);
 }
 
 .NavBar__list {
@@ -33,14 +38,13 @@
 }
 
 .NavBar__list li a {
-    color: var(--color-secondary);
+    color: var(--color-secondary-navbar);
     text-decoration: none;
 }
 
 .NavBar__list li a:hover {
-    color: var(--color-quaternary);
+    color: var(--color-quaternary-navbar);
 }
-
 
 .NavBar__toggle {
     display: none;
@@ -59,7 +63,7 @@
         /* Ajusta la distancia a tu preferencia */
         left: 0;
         right: 0;
-        background-color: var(--color-primary);
+        background-color: var(--color-primary-navbar);
         display: none;
         flex-direction: column;
         margin: 0;
@@ -72,16 +76,17 @@
     }
 
     .NavBar__list li a {
-        color: var(--color-secondary);
+        color: var(--color-secondary-navbar);
         text-decoration: none;
     }
 
     .NavBar__toggle {
         display: block;
-        color: var(--color-quaternary);
+        color: var(--color-quaternary-navbar);
         font-size: 1.5rem;
         margin-right: 1rem;
         cursor: pointer;
+        background-color: var(--color-secondary-navbar);
     }
 
     .NavBar__toggle:focus {
@@ -90,7 +95,7 @@
 
     .NavBar__toggle:hover,
     .NavBar__toggle:focus {
-        color: var(--color-tertiary);
+        background-color: var(--color-primary-navbar);
     }
 
     .NavBar__toggle .icon-bar {
@@ -98,7 +103,7 @@
         width: 1.5rem;
         height: 0.2rem;
         margin-bottom: 0.3rem;
-        background-color: var(--color-quaternary);
+        background-color: var(--color-quaternary-navbar);
         border-radius: 1rem;
     }
 

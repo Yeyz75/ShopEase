@@ -1,7 +1,8 @@
 :root {
-    --primary-color: #E11299;
-    --footer-background: #9A208C;
-    --footer-text-color: #FFEAEA;
+    --color-primary-footer: #0B132B;
+    --color-secondary-footer: #FFFFFF;
+    --color-tertiary-footer: #4B86B4;
+    --color-quaternary-footer: #5DA9E9;
 }
 
 @media (max-width: 768px) {
@@ -11,8 +12,8 @@
 }
 
 footer {
-    background-color: var(--footer-background);
-    color: var(--footer-text-color);
+    background-color: var(--color-primary-footer);
+    color: var(--color-secondary-footer);
     padding: 1.5rem;
 }
 
@@ -29,7 +30,7 @@ footer {
 }
 
 .footer-text a {
-    color: var(--primary-color);
+    color: var(--color-tertiary-footer);
     text-decoration: none;
 }
 
