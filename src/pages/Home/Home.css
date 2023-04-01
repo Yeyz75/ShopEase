@@ -1,13 +1,14 @@
 :root {
-    --primary-color: #9A208C;
-    --secondary-color: #E11299;
-    --background-color: #FFEAEA;
-    --accent-color: #F5C6EC;
+    --color-primary-home: #0B132B;
+    --color-secondary-home: #FFFFFF;
+    --color-tertiary-home: #4B86B4;
+    --color-quaternary-home: #5DA9E9;
 }
 
+
 .home__banner {
-    background-color: var(--primary-color);
-    color: var(--background-color);
+    background-color: var(--color-primary-home);
+    color: var(--color-secondary-home);
     background-image: url("/public/images/portada3.jpg");
     background-size: cover;
     background-position: center;
@@ -22,6 +23,7 @@
     color: #333;
 }
 
+
 .home__banner h1 {
     font-size: 3rem;
 }
@@ -31,9 +33,9 @@
 }
 
 .home__banner button {
-    background-color: var(--secondary-color);
-    color: #fff;
-    border: none;
+    color: var(--color-primary-home);
+    background-color: var(--color-secondary-home);
+    border: 2px solid var(--color-primary-home);
     padding: 1rem 2rem;
     font-size: 1.2rem;
     cursor: pointer;
@@ -41,13 +43,14 @@
 }
 
 .home__banner button:hover {
-    background-color: var(--background-color);
-    color: var(--secondary-color);
-    border: 2px solid var(--secondary-color);
+    background-color: var(--color-primary-home);
+    color: var(--color-secondary-home);
+    border: 2px solid var(--color-secondary-home);
 }
 
+
 .home__services {
-    background-color: var(--background-color);
+    background-color: var(--color-secondary-home);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,7 +62,7 @@
     text-align: center;
     margin: 1rem;
     padding: 1rem;
-    background-color: #fff;
+    background-color: var(--color-secondary-home);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
 }
@@ -82,8 +85,6 @@
 
 .home__services-item:hover {
     transform: translateY(-3px);
-    background-color: var(--accent-color);
-    color: var(--primary-color);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
 }
 
@@ -93,7 +94,7 @@
     justify-content: center;
     align-items: center;
     padding: 2rem;
-    background-color: #f8f8f8;
+    background-color: var(--color-secondary-home);
 }
 
 .home__categories-header {
@@ -111,7 +112,7 @@
     display: inline-block;
     margin: 1rem;
     transition: all 0.3s ease;
-    background-color: var(--background-color);
+    background-color: var(--color-secondary-home);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 }

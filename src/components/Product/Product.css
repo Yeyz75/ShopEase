@@ -1,11 +1,9 @@
 :root {
-    --color-primary: #9A208C;
-    --color-secondary: #E11299;
-    --background-color: #FFEAEA;
-    --color-accent: #F5C6EC;
-    --font-family: "Roboto", sans-serif;
+    --color-primary-product: #0B132B;
+    --color-secondary-product: #FFFFFF;
+    --color-tertiary-product: #4B86B4;
+    --color-quaternary-product: #5DA9E9;
 }
-
 
 .product {
     display: flex;
@@ -14,11 +12,11 @@
     width: 200px;
     margin: 20px;
     padding: 10px;
-    border: 1px solid var(--color-primary);
+    border: 1px solid var(--color-primary-product);
     border-radius: 5px;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
-    background-color: var(--color-secondary);
-    color: var(--color-primary);
+    background-color: var(--color-secondary-product);
+    color: var(--color-primary-product);
     font-family: var(--font-family);
     transition: all 0.3s ease;
 }
@@ -54,10 +52,10 @@
 
 .product p:last-child {
     font-weight: bold;
-    color: var(--color-accent);
+    color: var(--color-tertiary-product);
 }
 
 .product:hover h2,
 .product:hover p {
-    color: var(--color-accent);
+    color: var(--color-tertiary-product);
 }

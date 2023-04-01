@@ -1,19 +1,19 @@
 :root {
-    --color-primary: #9A208C;
-    --color-secondary: #E11299;
-    --background-color: #FFEAEA;
-    --color-accent: #F5C6EC;
+    --color-primary-products: #0B132B;
+    --color-secondary-products: #FFFFFF;
+    --color-tertiary-products: #4B86B4;
+    --color-quaternary-products: #5DA9E9;
     --font-family: "Roboto", sans-serif;
     --breakpoint-sm: 576px;
 }
 
+/* 2. Estilos generales de la página */
 .products {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    background-color: var(--background-color);
-    color: var(--color-primary);
+    color: var(--color-primary-products);
     font-family: var(--font-family);
     min-height: calc(100vh - 173px);
 }
@@ -28,6 +28,7 @@
     margin-bottom: 20px;
 }
 
+/* 3. Estilos de los productos */
 .product-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -54,15 +55,15 @@
     margin-top: 0;
     margin-bottom: 20px;
     text-align: center;
-    color: #333;
-    /* Cambiamos el color de la descripción de los productos para que se vea más legible */
+    color: var(--color-primary-tertiary);
 }
 
+/* 4. Estilos de los botones */
 button {
-    background-color: var(--color-primary);
-    border: none;
+    color: var(--color-primary-home);
+    background-color: var(--color-secondary-home);
+    border: 2px solid var(--color-primary-home);
     border-radius: 4px;
-    color: var(--color-secondary);
     cursor: pointer;
     font-size: 1rem;
     padding: 0.5rem 1rem;
@@ -70,19 +71,20 @@ button {
 }
 
 button:hover {
-    background-color: var(--color-secondary);
-    color: var(--color-primary);
+    background-color: var(--color-primary-products);
+    color: var(--color-secondary-products);
+    border: 2px solid var(--color-secondary-products);
 }
 
+/* 5. Media queries */
 @media (min-width: var(--breakpoint-sm)) {
     .products {
-        background-color: var(--color-secondary);
+        background-color: var(--color-secondary-products);
     }
 
     /* Hacer que el ancho máximo del texto de descripción del producto sea un poco más grande */
     .products p {
         max-width: 800px;
-        /* Ajustamos el ancho máximo del texto de descripción del producto para que se vea más legible */
         margin-left: auto;
         margin-right: auto;
     }
