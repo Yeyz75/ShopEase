@@ -1,0 +1,19 @@
+:root {
+    --color-primary-carcheckout: #0B132B;
+    --color-secondary-carcheckout: #FFFFFF;
+    --color-tertiary-carcheckout: #4B86B4;
+    --color-quaternary-carcheckout: #5DA9E9;
+    --font-family: "Roboto", sans-serif;
+    --breakpoint-sm: 576px;
+}
+
+
+.carContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    color: var(--color-primary-carcheckout);
+    font-family: var(--font-family);
+    min-height: calc(100vh - 173px);
+}
