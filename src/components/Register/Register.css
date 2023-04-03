@@ -1,0 +1,54 @@
+:root {
+    --color-primary-register: #0B132B;
+    --color-secondary-register: #FFFFFF;
+    --color-tertiary-register: #4B86B4;
+    --color-quaternary-register: #5DA9E9;
+}
+
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--color-primary-register);
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    background-color: var(--color-secondary-register);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.register-title {
+    color: var(--color-tertiary-register);
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.register-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.register-button {
+    background-color: var(--color-quaternary-register);
+    color: var(--color-secondary-register);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.register-button:hover {
+    background-color: #4881b4;
+}
