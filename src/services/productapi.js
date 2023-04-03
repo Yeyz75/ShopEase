@@ -1,12 +1,13 @@
-// services/productapi.js
+
 const options = {
     method: 'GET',
     headers: {
         'X-RapidAPI-Key': '9d6f555acbmshe7a800e6366e2e5p1952f9jsnbb529b5aa6dd',
-        'X-RapidAPI-Host': 'zappos1.p.rapidapi.com'
+        'X-RapidAPI-Host': 'zappos1.p.rapidapi.com',
     },
     timeout: 10000 // Tiempo de espera en milisegundos
 };
+
 
 
 async function getProductBrands() {
