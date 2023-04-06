@@ -1,43 +1,60 @@
 import React, { useState } from "react";
-import { db, collection, addDoc, getDocs } from "../../services/firebase";
+import {
+  db,
+  collection,
+  addDoc,
+  getDocs,
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+} from "../../services/firebase";
 
 const AddProductForm = ({ products, setProducts }) => {
-  // Creamos un estado local para el formulario
   const [productData, setProductData] = useState({
     productName: "",
     description: "",
     price: "",
-    image: "",
+    image: null, // cambiar a null en lugar de una cadena vacía
   });
 
-  // Esta función se ejecuta cada vez que el usuario escribe en un campo del formulario
   const handleChange = (event) => {
-    const { name, value } = event.target;
-    // Actualizamos solo la propiedad que ha cambiado
-    setProductData((prevState) => ({ ...prevState, [name]: value }));
+    const { name, value, files } = event.target; // añadir files
+    if (name === "image") {
+      // manejar archivos de imagen
+      setProductData((prevState) => ({ ...prevState, [name]: files[0] }));
+    } else {
+      setProductData((prevState) => ({ ...prevState, [name]: value }));
+    }
   };
 
-  // Esta función se ejecuta cuando el usuario envía el formulario
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      // Agregamos los datos del producto a la base de datos
+      // Subir imagen a Firebase Storage
+      const storageRef = ref(getStorage());
+      const imageRef = ref(storageRef, `images/${productData.image.name}`);
+      const snapshot = await uploadBytes(imageRef, productData.image);
+      const imageUrl = await getDownloadURL(snapshot.ref);
+
+      // Agregar datos del producto a la base de datos
       const docRef = await addDoc(collection(db, "products"), {
         productName: productData.productName,
         description: productData.description,
         price: productData.price,
-        image: productData.image,
+        image: imageUrl, // almacenar la URL de la imagen cargada en la base de datos
       });
       console.log("Producto agregado con ID: ", docRef.id);
-      // Limpiamos los campos del formulario
+
+      // Limpiar campos del formulario
       setProductData({
         productName: "",
         description: "",
         price: "",
-        image: "",
+        image: null,
       });
 
-      // Actualizamos la lista de productos que se muestra en la aplicación
+      // Actualizar la lista de productos que se muestra en la aplicación
       const productsRef = collection(db, "products");
       const querySnapshot = await getDocs(productsRef);
       const data = querySnapshot.docs.map((doc) => ({
@@ -50,7 +67,6 @@ const AddProductForm = ({ products, setProducts }) => {
     }
   };
 
-  // Renderizamos el formulario
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="productName">Nombre del producto:</label>
@@ -79,6 +95,29 @@ const AddProductForm = ({ products, setProducts }) => {
         value={productData.price}
         onChange={handleChange}
       />
+
+      <label htmlFor="image">
+        Imagen:
+        <input
+          type="file"
+          id="image"
+          name="image"
+          accept="image/*"
+          onChange={handleChange}
+          style={{ display: "none" }}
+        />
+        <span>
+          {productData.image ? productData.image.name : "Seleccionar imagen"}
+        </span>
+      </label>
+
+      {/* Agregar un botón para seleccionar la imagen */}
+      <button
+        type="button"
+        onClick={() => document.getElementById("image").click()}
+      >
+        Seleccionar imagen
+      </button>
 
       <button type="submit">Agregar producto</button>
     </form>

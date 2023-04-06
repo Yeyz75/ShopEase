@@ -9,6 +9,7 @@ const ProductTable = ({
     <table>
       <thead>
         <tr>
+          <th>Imagen</th>
           <th>Nombre</th>
           <th>Descripción</th>
           <th>Precio</th>
@@ -19,40 +20,42 @@ const ProductTable = ({
         {products.map((product) => (
           <tr key={product.id}>
             <td>
-              {/* Input controlado para el nombre del producto */}
+              <img
+                src={product.image}
+                alt={`Imagen de ${product.productName}`}
+              />
+              <input
+                type="text"
+                value={product.image}
+                onChange={(e) => handleProductChange(e, product.id, "image")}
+              />
+            </td>
+            <td>
               <input
                 type="text"
                 value={product.productName}
                 onChange={(e) =>
-                  // Llama a la función handleProductChange para actualizar el nombre del producto
                   handleProductChange(e, product.id, "productName")
                 }
               />
             </td>
             <td>
-              {/* Input controlado para la descripción del producto */}
               <input
                 type="text"
                 value={product.description}
                 onChange={(e) =>
-                  // Llama a la función handleProductChange para actualizar la descripción del producto
                   handleProductChange(e, product.id, "description")
                 }
               />
             </td>
             <td>
-              {/* Input controlado para el precio del producto */}
               <input
                 type="number"
                 value={product.price}
-                onChange={(e) =>
-                  // Llama a la función handleProductChange para actualizar el precio del producto
-                  handleProductChange(e, product.id, "price")
-                }
+                onChange={(e) => handleProductChange(e, product.id, "price")}
               />
             </td>
             <td>
-              {/* Botón para eliminar el producto */}
               <button onClick={() => handleProductDelete(product.id)}>
                 Eliminar
               </button>
