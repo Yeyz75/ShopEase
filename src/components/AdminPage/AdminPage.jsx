@@ -2,21 +2,16 @@ import React, { useState, useEffect } from "react";
 import {
   db,
   collection,
-  addDoc,
   getDocs,
   doc,
   updateDoc,
   deleteDoc,
 } from "../../services/firebase";
 import "./AdminPage.css";
+import AddProductForm from "../AddProductForm/index";
+import ProductList from "../ProductTable/index";
 
 const AdminPage = () => {
-  const [productData, setProductData] = useState({
-    productName: "",
-    description: "",
-    price: "",
-    image: "",
-  });
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -33,40 +28,6 @@ const AdminPage = () => {
         console.log("Error getting documents: ", error);
       });
   }, []);
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setProductData((prevState) => ({ ...prevState, [name]: value }));
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const docRef = await addDoc(collection(db, "products"), {
-        productName: productData.productName,
-        description: productData.description,
-        price: productData.price,
-        image: productData.image,
-      });
-      console.log("Producto agregado con ID: ", docRef.id);
-      setProductData({
-        productName: "",
-        description: "",
-        price: "",
-        image: "",
-      });
-      // Aquí se actualiza la lista de productos después de agregar uno nuevo
-      const productsRef = collection(db, "products");
-      const querySnapshot = await getDocs(productsRef);
-      const data = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setProducts(data);
-    } catch (error) {
-      console.log("Error agregando producto: ", error);
-    }
-  };
 
   const handleProductChange = async (event, productId, fieldName) => {
     const value = event.target.value;
@@ -105,85 +66,15 @@ const AdminPage = () => {
 
   return (
     <div className="container">
-      <h1>Administrando...</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="productName">Nombre del producto:</label>
-        <input
-          type="text"
-          id="productName"
-          name="productName"
-          value={productData.productName}
-          onChange={handleChange}
-        />
+      <AddProductForm setProducts={setProducts} />
 
-        <label htmlFor="description">Descripción:</label>
-        <input
-          type="text"
-          id="description"
-          name="description"
-          value={productData.description}
-          onChange={handleChange}
-        />
-
-        <label htmlFor="price">Precio:</label>
-        <input
-          type="number"
-          id="price"
-          name="price"
-          value={productData.price}
-          onChange={handleChange}
-        />
-
-        <button type="submit">Agregar producto</button>
-      </form>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Precio</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((product) => (
-            <tr key={product.id}>
-              <td>
-                <input
-                  type="text"
-                  value={product.productName}
-                  onChange={(e) =>
-                    handleProductChange(e, product.id, "productName")
-                  }
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={product.description}
-                  onChange={(e) =>
-                    handleProductChange(e, product.id, "description")
-                  }
-                />
-              </td>
-              <td>
-                <input
-                  type="number"
-                  value={product.price}
-                  onChange={(e) => handleProductChange(e, product.id, "price")}
-                />
-              </td>
-              <td>
-                <button onClick={() => handleProductDelete(product.id)}>
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <ProductList
+        products={products}
+        handleProductChange={handleProductChange}
+        handleProductDelete={handleProductDelete}
+      />
     </div>
   );
 };
+
 export default AdminPage;
