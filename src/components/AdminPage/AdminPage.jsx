@@ -8,6 +8,7 @@ import {
   updateDoc,
   deleteDoc,
 } from "../../services/firebase";
+import "./AdminPage.css";
 
 const AdminPage = () => {
   const [productData, setProductData] = useState({
@@ -54,6 +55,14 @@ const AdminPage = () => {
         price: "",
         image: "",
       });
+      // Aquí se actualiza la lista de productos después de agregar uno nuevo
+      const productsRef = collection(db, "products");
+      const querySnapshot = await getDocs(productsRef);
+      const data = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setProducts(data);
     } catch (error) {
       console.log("Error agregando producto: ", error);
     }
@@ -95,7 +104,7 @@ const AdminPage = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Administrando...</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="productName">Nombre del producto:</label>
