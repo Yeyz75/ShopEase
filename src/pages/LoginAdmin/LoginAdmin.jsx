@@ -3,7 +3,6 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../services/firebase";
 
 function LoginAdmin() {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -27,10 +26,10 @@ function LoginAdmin() {
   };
 
   return (
-    <div>
-      <h2>Inicio de sesión para administradores</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div>
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleFormSubmit}>
+        <h2 className="login-title">Inicio de sesión para administradores</h2>
+        <div className="input-container">
           <label htmlFor="email">Correo electrónico:</label>
           <input
             type="email"
@@ -41,7 +40,7 @@ function LoginAdmin() {
             required
           />
         </div>
-        <div>
+        <div className="input-container">
           <label htmlFor="password">Contraseña:</label>
           <input
             type="password"
@@ -52,8 +51,10 @@ function LoginAdmin() {
             required
           />
         </div>
-        {error && <div>{error}</div>}
-        <button type="submit">Iniciar sesión</button>
+        {error && <div className="error">{error}</div>}
+        <div className="button-container">
+          <button type="submit">Iniciar sesión</button>
+        </div>
       </form>
     </div>
   );
