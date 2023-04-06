@@ -1,3 +1,4 @@
+// Importamos los módulos necesarios de la biblioteca Firebase y los componentes necesarios
 import React, { useState, useEffect } from "react";
 import {
   db,
@@ -12,8 +13,10 @@ import AddProductForm from "../AddProductForm/index";
 import ProductList from "../ProductTable/index";
 
 const AdminPage = () => {
+  // Definimos el estado inicial del componente
   const [products, setProducts] = useState([]);
 
+  // Utilizamos el hook useEffect para recuperar los datos de productos de Firebase y actualizar el estado de productos
   useEffect(() => {
     const productsRef = collection(db, "products");
     getDocs(productsRef)
@@ -29,6 +32,7 @@ const AdminPage = () => {
       });
   }, []);
 
+  // Manejador de cambios en los campos de producto
   const handleProductChange = async (event, productId, fieldName) => {
     const value = event.target.value;
     const productIndex = products.findIndex(
@@ -46,6 +50,7 @@ const AdminPage = () => {
     }
   };
 
+  // Manejador de eliminación de productos
   const handleProductDelete = async (productId) => {
     const confirmed = window.confirm(
       "¿Está seguro de que desea eliminar este producto?"
@@ -64,10 +69,10 @@ const AdminPage = () => {
     }
   };
 
+  // Renderizamos el formulario de agregar producto y la tabla de productos
   return (
     <div className="container">
       <AddProductForm setProducts={setProducts} />
-
       <ProductList
         products={products}
         handleProductChange={handleProductChange}
@@ -77,4 +82,5 @@ const AdminPage = () => {
   );
 };
 
+// Exportamos el componente AdminPage
 export default AdminPage;
