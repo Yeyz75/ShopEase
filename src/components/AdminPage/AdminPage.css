@@ -1,0 +1,13 @@
+.admin-page {
+    background-color: #f8f8f8;
+    color: #333;
+    padding: 20px;
+}
+
+.admin-page h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Add additional styles for components and UI elements as needed */

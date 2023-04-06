@@ -8,6 +8,7 @@ import Login from './components/Login/index';
 import Register from './components/Register/index';
 import CarCheckout from './pages/CarCheckout/CarCheckout';
 import LoginAdmin from './pages/LoginAdmin/LoginAdmin';
+import RegisterProducts from './pages/RegisterProducts/RegisterProducts';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/LoginAdmin" element={<LoginAdmin />} />
+          <Route path="/RegisterProducts" element={<RegisterProducts />} />
         </Routes>
         <Footer />
       </Router>
