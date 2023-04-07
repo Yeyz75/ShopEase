@@ -7,6 +7,7 @@ import {
   doc,
   updateDoc,
   deleteDoc,
+  getDownloadURL,
   getStorage,
   ref,
   deleteObject,
@@ -54,11 +55,11 @@ const AdminPage = () => {
   };
 
   // Manejador de eliminación de productos
-  const handleProductDelete = async (productId, imageUrl) => {
+  const handleProductDelete = async (productId, image) => {
     const confirmed = window.confirm(
       "¿Está seguro de que desea eliminar este producto?"
     );
-    console.log(imageUrl);
+    console.log(image);
     if (confirmed) {
       const filteredProducts = products.filter(
         (product) => product.id !== productId
@@ -70,12 +71,27 @@ const AdminPage = () => {
 
         // Obtenemos la referencia al Firebase Storage
         const storage = getStorage();
-        // Obtenemos la referencia a la imagen asociada al producto
-        const imageRef = ref(storage, imageUrl);
 
-        // Eliminamos la imagen del Firebase Storage
-        await deleteObject(imageRef);
-        console.log("Imagen eliminada con URL: ", imageUrl);
+        // Obtenemos el nombre del archivo de la URL de imagen
+        const fileName = image.split("/").pop();
+
+        // Obtenemos la referencia al archivo de imagen asociado al producto
+        const imageRef = ref(storage, fileName);
+
+        try {
+          // Verificamos si el objeto existe en Firebase Storage
+          await getDownloadURL(imageRef);
+
+          // Si el objeto existe, lo eliminamos
+          await deleteObject(imageRef);
+          console.log("Imagen eliminada con URL: ", image);
+        } catch (error) {
+          if (error.code === "storage/object-not-found") {
+            console.log("El objeto no existe en Firebase Storage");
+          } else {
+            console.log("Error eliminando imagen: ", error);
+          }
+        }
       } catch (error) {
         console.log("Error eliminando producto: ", error);
       }

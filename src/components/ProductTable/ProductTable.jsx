@@ -56,7 +56,9 @@ const ProductTable = ({
               />
             </td>
             <td>
-              <button onClick={() => handleProductDelete(product.id)}>
+              <button
+                onClick={() => handleProductDelete(product.id, product.image)}
+              >
                 Eliminar
               </button>
             </td>

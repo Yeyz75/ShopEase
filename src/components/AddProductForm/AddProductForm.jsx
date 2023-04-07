@@ -15,14 +15,27 @@ const AddProductForm = ({ products, setProducts }) => {
     productName: "",
     description: "",
     price: "",
-    image: null, // cambiar a null en lugar de una cadena vacía
+    image: null,
   });
 
   const handleChange = (event) => {
-    const { name, value, files } = event.target; // añadir files
+    const { name, value, files } = event.target;
+
     if (name === "image") {
-      // manejar archivos de imagen
-      setProductData((prevState) => ({ ...prevState, [name]: files[0] }));
+      // Verificar si hay archivos seleccionados
+      if (files.length > 0) {
+        // Obtener la extensión del archivo
+        const fileExtension = files[0].name.split(".").pop();
+        // Verificar si la extensión es válida
+        if (["jpg", "jpeg", "png"].includes(fileExtension.toLowerCase())) {
+          // Actualizar el estado con el archivo seleccionado
+          setProductData((prevState) => ({ ...prevState, [name]: files[0] }));
+        } else {
+          alert(
+            "Por favor seleccione un archivo de imagen válido (jpg, jpeg, png)."
+          );
+        }
+      }
     } else {
       setProductData((prevState) => ({ ...prevState, [name]: value }));
     }
@@ -30,38 +43,43 @@ const AddProductForm = ({ products, setProducts }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     try {
       // Subir imagen a Firebase Storage
-      const storageRef = ref(getStorage());
-      const imageRef = ref(storageRef, `images/${productData.image.name}`);
-      const snapshot = await uploadBytes(imageRef, productData.image);
-      const imageUrl = await getDownloadURL(snapshot.ref);
+      if (productData.image) {
+        const storageRef = ref(getStorage());
+        const imageRef = ref(storageRef, `images/${productData.image.name}`);
+        const snapshot = await uploadBytes(imageRef, productData.image);
+        const imageUrl = await getDownloadURL(snapshot.ref);
 
-      // Agregar datos del producto a la base de datos
-      const docRef = await addDoc(collection(db, "products"), {
-        productName: productData.productName,
-        description: productData.description,
-        price: productData.price,
-        image: imageUrl, // almacenar la URL de la imagen cargada en la base de datos
-      });
-      console.log("Producto agregado con ID: ", docRef.id);
+        // Agregar datos del producto a la base de datos
+        const docRef = await addDoc(collection(db, "products"), {
+          productName: productData.productName,
+          description: productData.description,
+          price: productData.price,
+          image: imageUrl,
+        });
+        console.log("Producto agregado con ID: ", docRef.id);
 
-      // Limpiar campos del formulario
-      setProductData({
-        productName: "",
-        description: "",
-        price: "",
-        image: null,
-      });
+        // Limpiar campos del formulario
+        setProductData({
+          productName: "",
+          description: "",
+          price: "",
+          image: null,
+        });
 
-      // Actualizar la lista de productos que se muestra en la aplicación
-      const productsRef = collection(db, "products");
-      const querySnapshot = await getDocs(productsRef);
-      const data = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setProducts(data);
+        // Actualizar la lista de productos que se muestra en la aplicación
+        const productsRef = collection(db, "products");
+        const querySnapshot = await getDocs(productsRef);
+        const data = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setProducts(data);
+      } else {
+        alert("Por favor seleccione una imagen para el producto.");
+      }
     } catch (error) {
       console.log("Error agregando producto: ", error);
     }
@@ -111,7 +129,7 @@ const AddProductForm = ({ products, setProducts }) => {
         </span>
       </label>
 
-      {/* Agregar un botón para seleccionar la imagen */}
+      {/* Botón para seleccionar la imagen */}
       <button
         type="button"
         onClick={() => document.getElementById("image").click()}
@@ -123,5 +141,4 @@ const AddProductForm = ({ products, setProducts }) => {
     </form>
   );
 };
-
 export default AddProductForm;
