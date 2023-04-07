@@ -7,10 +7,13 @@ import {
   doc,
   updateDoc,
   deleteDoc,
+  getStorage,
+  ref,
+  deleteObject,
 } from "../../services/firebase";
 import "./AdminPage.css";
+import ProductTable from "../ProductTable/index";
 import AddProductForm from "../AddProductForm/index";
-import ProductList from "../ProductTable/index";
 
 const AdminPage = () => {
   // Definimos el estado inicial del componente
@@ -51,10 +54,11 @@ const AdminPage = () => {
   };
 
   // Manejador de eliminación de productos
-  const handleProductDelete = async (productId) => {
+  const handleProductDelete = async (productId, imageUrl) => {
     const confirmed = window.confirm(
       "¿Está seguro de que desea eliminar este producto?"
     );
+    console.log(imageUrl);
     if (confirmed) {
       const filteredProducts = products.filter(
         (product) => product.id !== productId
@@ -63,6 +67,15 @@ const AdminPage = () => {
       try {
         await deleteDoc(doc(db, "products", productId));
         console.log("Producto eliminado con ID: ", productId);
+
+        // Obtenemos la referencia al Firebase Storage
+        const storage = getStorage();
+        // Obtenemos la referencia a la imagen asociada al producto
+        const imageRef = ref(storage, imageUrl);
+
+        // Eliminamos la imagen del Firebase Storage
+        await deleteObject(imageRef);
+        console.log("Imagen eliminada con URL: ", imageUrl);
       } catch (error) {
         console.log("Error eliminando producto: ", error);
       }
@@ -73,7 +86,7 @@ const AdminPage = () => {
   return (
     <div className="container">
       <AddProductForm setProducts={setProducts} />
-      <ProductList
+      <ProductTable
         products={products}
         handleProductChange={handleProductChange}
         handleProductDelete={handleProductDelete}

@@ -9,7 +9,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -32,5 +32,5 @@ export {
   deleteDoc,
   doc,
   updateDoc,
-  storage, ref, uploadBytes, getDownloadURL, getStorage,
+  storage, ref, uploadBytes, getDownloadURL, getStorage, deleteObject,
 };
