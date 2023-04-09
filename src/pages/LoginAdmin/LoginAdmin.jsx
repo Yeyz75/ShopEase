@@ -1,25 +1,29 @@
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../services/firebase";
+import { useNavigate } from "react-router-dom";
 
 function LoginAdmin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
-  const handleEmailChange = (event) => {
+  const handleEmailInputChange = (event) => {
     setEmail(event.target.value);
   };
 
-  const handlePasswordChange = (event) => {
+  const handlePasswordInputChange = (event) => {
     setPassword(event.target.value);
   };
+
+  const navigate = useNavigate();
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      // Aquí redireccionas al usuario a la sección de administradores
+      console.log("Autenticación exitosa");
+      navigate("/RegisterProducts");
     } catch (error) {
       setError(error.message);
     }
@@ -36,7 +40,8 @@ function LoginAdmin() {
             id="email"
             name="email"
             value={email}
-            onChange={handleEmailChange}
+            onChange={handleEmailInputChange}
+            aria-label="Ingrese su correo electrónico"
             required
           />
         </div>
@@ -47,7 +52,8 @@ function LoginAdmin() {
             id="password"
             name="password"
             value={password}
-            onChange={handlePasswordChange}
+            onChange={handlePasswordInputChange}
+            aria-label="Ingrese su contraseña"
             required
           />
         </div>
