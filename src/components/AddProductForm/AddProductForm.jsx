@@ -49,15 +49,20 @@ const AddProductForm = ({ products, setProducts }) => {
       if (productData.image) {
         const storageRef = ref(getStorage());
         const imageRef = ref(storageRef, `images/${productData.image.name}`);
-        const snapshot = await uploadBytes(imageRef, productData.image);
-        const imageUrl = await getDownloadURL(snapshot.ref);
+        await uploadBytes(imageRef, productData.image); // No es necesario utilizar la variable "snapshot" en este caso
+        const imageName = productData.image.name; // Guardar el nombre de la imagen
+        console.log("Imagen subida con nombre: ", imageName);
+
+        // Obtener URL de descarga de la imagen
+        const imageUrl = await getDownloadURL(imageRef);
+        console.log("URL de descarga de la imagen: ", imageUrl);
 
         // Agregar datos del producto a la base de datos
         const docRef = await addDoc(collection(db, "products"), {
           productName: productData.productName,
           description: productData.description,
           price: productData.price,
-          image: imageUrl,
+          image: imageUrl, // Guardar la URL de descarga de la imagen en lugar del nombre de la imagen
         });
         console.log("Producto agregado con ID: ", docRef.id);
 
@@ -84,7 +89,6 @@ const AddProductForm = ({ products, setProducts }) => {
       console.log("Error agregando producto: ", error);
     }
   };
-
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="productName">Nombre del producto:</label>
@@ -124,9 +128,7 @@ const AddProductForm = ({ products, setProducts }) => {
           onChange={handleChange}
           style={{ display: "none" }}
         />
-        <span>
-          {productData.image ? productData.image.name : "Seleccionar imagen"}
-        </span>
+        <span>{productData.image?.name || "Seleccionar imagen"}</span>
       </label>
 
       {/* Botón para seleccionar la imagen */}
