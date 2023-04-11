@@ -15,5 +15,5 @@
     padding: 20px;
     color: var(--color-primary-carcheckout);
     font-family: var(--font-family);
-    min-height: calc(100vh - 173px);
+    min-height: calc(100vh - 133px);
 }
