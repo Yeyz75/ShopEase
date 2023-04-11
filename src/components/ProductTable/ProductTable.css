@@ -1,0 +1,62 @@
+/* Reset de los estilos de la tabla */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+thead th {
+    text-align: left;
+    font-weight: bold;
+    padding: 10px;
+}
+
+tbody td {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+
+tbody td img {
+    max-width: 100px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+tbody td input {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+tbody td button {
+    background-color: #ff6347;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+tbody td button:hover {
+    background-color: #d95232;
+}
+
+/* Responsividad */
+@media only screen and (max-width: 600px) {
+    thead {
+        display: none;
+    }
+
+    tbody td {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    tbody td:before {
+        content: attr(data-title);
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import "./ProductTable.css";
 
 const ProductTable = ({
   products,
@@ -24,11 +25,11 @@ const ProductTable = ({
                 src={product.image}
                 alt={`Imagen de ${product.productName}`}
               />
-              <input
+              {/*               <input
                 type="text"
                 value={product.image}
                 onChange={(e) => handleProductChange(e, product.id, "image")}
-              />
+              /> */}
             </td>
             <td>
               <input
