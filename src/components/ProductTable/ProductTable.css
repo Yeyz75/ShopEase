@@ -3,6 +3,7 @@ table {
     border-collapse: collapse;
     width: 100%;
     margin-bottom: 20px;
+    min-height: calc(100vh - 300px);
 }
 
 thead th {

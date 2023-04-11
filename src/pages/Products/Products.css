@@ -1,91 +1,74 @@
-:root {
-    --color-primary-products: #0B132B;
-    --color-secondary-products: #FFFFFF;
-    --color-tertiary-products: #4B86B4;
-    --color-quaternary-products: #5DA9E9;
-    --font-family: "Roboto", sans-serif;
-    --breakpoint-sm: 576px;
-}
-
-/* 2. Estilos generales de la página */
 .products {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
-    color: var(--color-primary-products);
-    font-family: var(--font-family);
-    min-height: calc(100vh - 173px);
-}
-
-.header,
-.products p {
-    text-align: center;
-    line-height: 1.5;
+    box-sizing: border-box;
+    min-height: calc(100vh - 130px);
 }
 
 .header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    font-size: 48px;
     margin-bottom: 20px;
 }
 
-/* 3. Estilos de los productos */
+.header p {
+    font-size: 24px;
+}
+
 .product-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
 
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
+.product {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
 }
 
-.products h1 {
-    font-size: 2rem;
-    margin-top: 0;
+.product:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.product img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
     margin-bottom: 10px;
-    text-align: center;
 }
 
-.products p {
-    font-size: 1rem;
-    margin-top: 0;
-    margin-bottom: 20px;
-    text-align: center;
-    color: var(--color-primary-tertiary);
+.product h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
-/* 4. Estilos de los botones */
-button {
-    color: var(--color-primary-home);
-    background-color: var(--color-secondary-home);
-    border: 2px solid var(--color-primary-home);
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+.product p {
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
-button:hover {
-    background-color: var(--color-primary-products);
-    color: var(--color-secondary-products);
-    border: 2px solid var(--color-secondary-products);
+.product p:last-child {
+    margin-bottom: 0;
 }
 
-/* 5. Media queries */
-@media (min-width: var(--breakpoint-sm)) {
-    .products {
-        background-color: var(--color-secondary-products);
+@media only screen and (min-width: 769px) {
+    .product-wrapper {
+        grid-template-columns: repeat(3, minmax(250px, 1fr));
     }
+}
 
-    /* Hacer que el ancho máximo del texto de descripción del producto sea un poco más grande */
-    .products p {
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
+@media only screen and (max-width: 768px) {
+    .product-wrapper {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
 }
